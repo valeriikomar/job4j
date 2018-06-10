@@ -18,4 +18,11 @@ public class MaxTest {
         int result = maxim.max(3, 1);
         assertThat(result, is(3));
     }
+
+    @Test
+    public void whenSecondMoreThanFirtsAndThree() {
+        Max maxim = new Max();
+        int result = maxim.max(5, 8, 3);
+        assertThat(result, is(8));
+    }
 }
