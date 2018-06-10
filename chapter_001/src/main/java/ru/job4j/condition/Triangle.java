@@ -55,7 +55,8 @@ public class Triangle {
      * @return
      */
     private boolean exist(double ab, double ac, double bc) {
-        double p = this.period(ab, ac, bc);
-        return (p > ab) && (p > ac) && (p > bc) ? true : false;
+        //double p = this.period(ab, ac, bc);
+        //return (p > ab) && (p > ac) && (p > bc) ? true : false;
+        return ((ab + ac) > bc) && ((ab + bc) > ac) && ((bc + ac) > ab);
     }
 }
