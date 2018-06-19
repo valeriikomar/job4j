@@ -5,18 +5,19 @@ import java.util.Arrays;
 public class ArrayDuplicate {
     public String[] remove(String[] array) {
         int count = 0;
-        for (int i = 0; i < array.length; i++) {
-            String temp = "";
-            for (int j = i + 1; j < array.length - 1 - count; j++) {
+        String temp = "";
+        for (int i = 0; i < array.length - 1 - count; i++) {
+            for (int j = i + 1; j < array.length - count; j++) {
                 if (array[i] == array[j]) {
-                    temp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
-                }
-                if (temp != "") {
+                    for (int k = j; k < array.length - 1 - count; k++) {
+                        temp = array[k];
+                        array[k] = array[k + 1];
+                        array[k + 1] = temp;
+                    }
                     count++;
+                    j--;
                 }
             }
-        } return Arrays.copyOf(array, array.length - 1 - count);
+        } return Arrays.copyOf(array, array.length - count);
     }
 }
