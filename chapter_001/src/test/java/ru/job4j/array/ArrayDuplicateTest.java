@@ -9,7 +9,7 @@ public class ArrayDuplicateTest {
     public void whenRemoveDuplicatesThenArrayWithoutDuplicate() {
         ArrayDuplicate duplicate = new ArrayDuplicate();
         String[] result = duplicate.remove(new String[] {
-               "При1вет", "При1вет", "Hello", "При1вет", "При1вет"});
-        assertThat(result, is(new String[]{"При1вет", "Hello"}));
+               "Hi", "Hi", "Hi", "Hello", "Hi", "Yes", "Yes"});
+        assertThat(result, is(new String[]{"Hi", "Hello", "Yes"}));
     }
 }
