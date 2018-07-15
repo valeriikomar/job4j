@@ -1,5 +1,9 @@
 package ru.job4j.calculator;
 
+/**
+ * Калькуляция оптимального веса человека
+ * @author Komar Valerii (val1988x@gmail.com)
+ */
 public class Fit {
     /**
      * Идеальный вес для мужщины.

@@ -1,10 +1,21 @@
 package ru.job4j.condition;
 
+/**
+ * Поиск треугольника
+ * @author Komar Valerii (val1988x@gmail.com)
+ * @since 0.1
+ */
 public class Triangle {
     private Point a;
     private Point b;
     private Point c;
 
+    /**
+     * Конструктор класса
+     * @param a точка А треугольника
+     * @param b точка В треугольника
+     * @param c точка С треугольника
+     */
     public Triangle(Point a, Point b, Point c) {
         this.a = a;
         this.b = b;

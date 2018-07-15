@@ -1,7 +1,6 @@
 package ru.job4j.condition;
 
 /**
- * @autor Valerii Komar (mailto:val1988x@gmail.com)
  * @version 08/06/2018
  * @since 0.1
  */

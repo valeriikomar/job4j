@@ -1,7 +1,14 @@
 package ru.job4j.array;
 
+/**
+ * Пузырьковая сортировка
+ */
 public class BubbleSort {
-
+    /**
+     *
+     * @param  array входящий массив типа int для сортировки
+     * @return отсортированный массив
+     */
     public int[] sort(int[] array) {
         int temp = 0;
         for (int i = 0; i < array.length - 1; i++) {

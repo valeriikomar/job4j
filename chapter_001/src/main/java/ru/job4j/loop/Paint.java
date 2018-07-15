@@ -3,11 +3,13 @@ package ru.job4j.loop;
 import java.util.function.BiPredicate;
 
 /**
+ * Пирамида в псевдографике
  * @author Valerii Komar (mailto:val1988x@gmail.com)
  * @version 11.06.18
  * @since 0.1
  */
 public class Paint {
+
     public String rightTrl(int height) {
         return this.loopBy(
                 height,

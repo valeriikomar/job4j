@@ -2,7 +2,16 @@ package ru.job4j.array;
 
 import java.util.Arrays;
 
+/**
+ * Поиск дубликатов и сортировка.
+ * @author Komar Valerii (val1988x@gmail.com)
+ */
 public class ArrayDuplicate {
+    /**
+     *
+     * @param array входящий массив для поиска
+     * @return отсортированный массив без дубликатов
+     */
     public String[] remove(String[] array) {
         int count = 0;
         String temp = "";
