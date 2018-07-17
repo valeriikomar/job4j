@@ -1,7 +1,7 @@
 package ru.job4j.array;
 
 /**
- * Реализация отсортированного массива из 2 входящий отсортированный путём добавления элементов без сортировки
+ * Реализация отсортированного массива из 2 входящих отсортированных, путём добавления элементов без сортировки
  * @author Komar Valerii (val1988x@gmail.com)
  * @version 13.07.2018
  * @since 0.1
@@ -16,9 +16,30 @@ public class SortTwoToOne {
     public int[] sort(int[] a, int[] b) {
         int x = 0;
         int y = 0;
+        boolean finishA = false;
+        boolean finishB = false;
         int[] result = new int[a.length + b.length];
-        for (int i = 0; i < a.length + b.length; i++) {
-            if ((x < a.length) && (y < b.length)) {
+        for (int i = 0; i < a.length + b.length;) {
+            while (((finishB) & (!finishA)) || ((!finishA) && (a[x] <= b[y]))) {
+                result[i] = a[x];
+                i++;
+                x++;
+                if (x == a.length) {
+                    finishA = true;
+                    x--;
+                }
+            }
+            while (((finishA) & (!finishB)) || ((!finishB) && (b[y] <= a[x]))) {
+                result[i] = b[y];
+                i++;
+                y++;
+                if (y == b.length) {
+                    finishB = true;
+                    y--;
+                }
+            }
+
+/*            if ((x < a.length) && (y < b.length)) {
                 if (a[x] <= b[y]) {
                     result[i] = a[x];
                     x++;
@@ -36,7 +57,9 @@ public class SortTwoToOne {
                         result[i] = b[y];
                         y++;
                     }
+*/
         }
+
         return result;
     }
 }
