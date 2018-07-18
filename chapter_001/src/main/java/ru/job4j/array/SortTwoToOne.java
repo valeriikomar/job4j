@@ -26,7 +26,6 @@ public class SortTwoToOne {
                 x++;
                 if (x == a.length) {
                     finishA = true;
-                    x--;
                 }
             }
             while (((finishA) & (!finishB)) || ((!finishB) && (b[y] <= a[x]))) {
@@ -35,7 +34,6 @@ public class SortTwoToOne {
                 y++;
                 if (y == b.length) {
                     finishB = true;
-                    y--;
                 }
             }
 
