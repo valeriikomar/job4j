@@ -56,12 +56,20 @@ public class Tracker {
      * @return массив совпадений
      */
     public Item[] findByName(String key) {
-        Item[] result = new Item[this.position];
-        int posresult = 0;
-        for (Item item: this.items) {
-            if (item.getName().equals(key)) {
-                result[posresult] = item;
-                posresult++;
+        Item[] result = null;
+        int max = 0, pos = 0;
+        for (int i = 0; i < position; i++) {
+            if ((this.items[i] != null) && (this.items[i].getName().equals(key))) {
+                max++;
+            }
+        }
+        if (max != 0) {
+             result = new Item[max];
+            for (int i = 0; i < position; i++) {
+                if (items[i].getName().equals(key)) {
+                    result[pos] = items[i];
+                    pos++;
+                }
             }
         }
         return result;
@@ -83,29 +91,32 @@ public class Tracker {
      * @param id ключ
      * @param item элемент для редактирования
      */
-    public void replace(String id, Item item) {
-        Item it = this.findById(id);
-        it = item;
-        /*
-        it.setName(item.getName());
-        it.setDesc(item.getDesc());
-        it.setComments(item.getComments());
-        it.setCreate(item.getCreate());
-        */
+    public boolean replace(String id, Item item) {
+        boolean found = false;
+        for (int i = 0; i < position; i++) {
+            if ((this.items[i] != null) && (this.items[i].getId().equals(id))) {
+                item.setId(id);
+                this.items[i] = item;
+                found = true;
+                break;
+            }
+        }
+        return found;
     }
 
     /**
      * Метод удаления заявок
      * @param id
      */
-    public void delete(String id) {
-        Item it = this.findById(id);
-        Item[]  items = new Item[this.position - 1];
-        int pos = 0;
-        while (this.items[pos] != it) {
-            pos++;
+    public boolean delete(String id) {
+        boolean found = false;
+        for (int i = 0; i < position; i++) {
+            if ((this.items[i] != null) && (this.items[i].getId().equals(id))) {
+                System.arraycopy(items, i, items, i - 1, position - i);
+                found = true;
+                break;
+            }
         }
-        System.arraycopy(items, 0, this.items, 0, pos - 1);
-        System.arraycopy(items, pos, this.items, pos + 1, position);
+        return found;
     }
 }

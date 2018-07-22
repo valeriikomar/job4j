@@ -19,7 +19,6 @@ public class TrackerTest {
         Item next = new Item("test2","testDescription2",1234L);
         next.setId(previous.getId());
         tracker.replace(previous.getId(), next);
-        // Проверяем, что заявка с таким id имеет новые имя test2.
         assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
     }
     @Test
@@ -42,8 +41,21 @@ public class TrackerTest {
         Item item = new Item("one", "onedesc", 12L);
         tracker.add(item);
         Item item1 = new Item("two", "twodesc", 13L);
-        tracker.add(item);
+        tracker.add(item1);
         tracker.delete(item.getId());
+        assertThat(tracker.findAll()[0], is(item1));
+    }
+    @Test
+    public void whenDeleteMiddleElementThenTrackerHasOneLess() {
+        Tracker tracker = new Tracker();
+        Item item1 = new Item("one", "onedesc", 12L);
+        tracker.add(item1);
+        Item item2 = new Item("two", "twodesc", 13L);
+        tracker.add(item2);
+        Item item3 = new Item("three", "threeDesc", 14L);
+        tracker.add(item3);
+        tracker.delete(item2.getId());
+        assertThat(tracker.findAll()[1], is(item3));
         assertThat(tracker.findAll()[0], is(item1));
     }
 
