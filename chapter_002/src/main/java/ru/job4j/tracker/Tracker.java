@@ -100,8 +100,7 @@ public class Tracker {
         boolean found = false;
         for (int i = 0; i < position; i++) {
             if ((this.items[i] != null) && (this.items[i].getId().equals(id))) {
-                System.arraycopy(items, i + 1, items, i, position - i - 1);
-                items[position - 1] = null;
+                System.arraycopy(items, i + 1, items, i, items.length - i - 1);
                 found = true;
                 position--;
                 break;

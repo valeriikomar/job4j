@@ -44,8 +44,11 @@ public class TrackerTest {
         tracker.add(item1);
         Item item2 = new Item("nameD", "IdontwannaFind", 125L);
         tracker.add(item2);
-        assertThat(tracker.findByName("nameD")[0], is(item1.getName()));
-        assertThat(tracker.findByName("nameD")[1], is(item2.getName()));
+        Item[] result = new Item[2];
+        result[0] = item;
+        result[1] = item1;
+        assertThat(tracker.findByName("nameD"), is(result));
+
     }
     @Test
     public void whenDeleteThenTrackerHasOneLess() {
