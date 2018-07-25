@@ -36,6 +36,18 @@ public class TrackerTest {
         assertThat(tracker.findByName("name")[0], is(item.getName()));
     }
     @Test
+    public void whenFindByNameThenTrackerFindSameItems() {
+        Tracker tracker = new Tracker();
+        Item item = new Item("name", "IwannaFind", 122L);
+        tracker.add(item);
+        Item item1 = new Item("nameD", "IwannaFind", 123L);
+        tracker.add(item1);
+        Item item2 = new Item("nameD", "IdontwannaFind", 125L);
+        tracker.add(item2);
+        assertThat(tracker.findByName("nameD")[0], is(item1.getName()));
+        assertThat(tracker.findByName("nameD")[1], is(item2.getName()));
+    }
+    @Test
     public void whenDeleteThenTrackerHasOneLess() {
         Tracker tracker = new Tracker();
         Item item = new Item("one", "onedesc", 12L);
@@ -55,8 +67,9 @@ public class TrackerTest {
         Item item3 = new Item("three", "threeDesc", 14L);
         tracker.add(item3);
         tracker.delete(item2.getId());
-        assertThat(tracker.findAll()[1], is(item3));
-        assertThat(tracker.findAll()[0], is(item1));
+        assertThat(tracker.findByName("one")[0], is(item1.getName()));
+        assertThat(tracker.findByName("three")[1], is(item3.getName()));
+
     }
 
 

@@ -56,34 +56,22 @@ public class Tracker {
      * @return массив совпадений
      */
     public Item[] findByName(String key) {
-        Item[] result = null;
-        int max = 0, pos = 0;
+        Item[] result = new Item[position];
+        int max = 0;
         for (int i = 0; i < position; i++) {
             if ((this.items[i] != null) && (this.items[i].getName().equals(key))) {
+                result[max] = items[i];
                 max++;
             }
         }
-        if (max != 0) {
-             result = new Item[max];
-            for (int i = 0; i < position; i++) {
-                if (items[i].getName().equals(key)) {
-                    result[pos] = items[i];
-                    pos++;
-                }
-            }
-        }
-        return result;
+        return Arrays.copyOf(result, max - 1);
     }
     /**
      * Метод вывода всех элементов
      * @return массив элементов
      */
     public Item[] findAll() {
-        Item[] result = new Item[this.position];
-        for (int index = 0; index != this.position; index++) {
-            result[index] = this.items[index];
-        }
-        return result;
+        return Arrays.copyOf(this.items, this.position);
     }
 
     /**
@@ -112,8 +100,9 @@ public class Tracker {
         boolean found = false;
         for (int i = 0; i < position; i++) {
             if ((this.items[i] != null) && (this.items[i].getId().equals(id))) {
-                System.arraycopy(items, i, items, i - 1, position - i);
+                System.arraycopy(items, i + 1, items, i, position - i - 1);
                 found = true;
+                position--;
                 break;
             }
         }
