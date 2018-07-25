@@ -58,6 +58,18 @@ public class TrackerTest {
         assertThat(tracker.findAll()[0], is(item1));
     }
     @Test
+    public void whenDeleteOneFromThreeElsements() {
+        Tracker tracker = new Tracker();
+        Item item1 = new Item("one", "onedesc", 12L);
+        tracker.add(item1);
+        Item item2 = new Item("two", "twodesc", 13L);
+        tracker.add(item2);
+        Item item3 = new Item("three", "threedesc", 14L);
+        tracker.add(item3);
+        tracker.delete(item3.getId());
+        assertThat(tracker.findAll()[1], is(item2));
+    }
+    @Test
     public void whenDeleteMiddleElementThenTrackerHasOneLess() {
         Tracker tracker = new Tracker();
         Item item1 = new Item("one", "onedesc", 12L);

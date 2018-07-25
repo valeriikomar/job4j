@@ -64,7 +64,7 @@ public class Tracker {
                 max++;
             }
         }
-        return Arrays.copyOf(result, max - 1);
+        return Arrays.copyOf(result, max);
     }
     /**
      * Метод вывода всех элементов
@@ -101,6 +101,7 @@ public class Tracker {
         for (int i = 0; i < position; i++) {
             if ((this.items[i] != null) && (this.items[i].getId().equals(id))) {
                 System.arraycopy(items, i + 1, items, i, position - i - 1);
+                items[position - 1] = null;
                 found = true;
                 position--;
                 break;
