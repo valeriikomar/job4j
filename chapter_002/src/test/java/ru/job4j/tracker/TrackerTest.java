@@ -14,9 +14,9 @@ public class TrackerTest {
     @Test
     public void whenReplaceNameThenReturnNewName() {
         Tracker tracker = new Tracker();
-        Item previous = new Item("test1","testDescription",123L);
+        Item previous = new Item("test1", "testDescription", 123L);
         tracker.add(previous);
-        Item next = new Item("test2","testDescription2",1234L);
+        Item next = new Item("test2", "testDescription2", 1234L);
         next.setId(previous.getId());
         tracker.replace(previous.getId(), next);
         assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
@@ -33,7 +33,7 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item = new Item("name", "IwannaFind", 122L);
         tracker.add(item);
-        assertThat(tracker.findByName("name")[0], is(item.getName()));
+        assertThat(tracker.findByName("name")[0].getName(), is(item.getName()));
     }
     @Test
     public void whenFindByNameThenTrackerFindSameItems() {
@@ -45,8 +45,8 @@ public class TrackerTest {
         Item item2 = new Item("nameD", "IdontwannaFind", 125L);
         tracker.add(item2);
         Item[] result = new Item[2];
-        result[0] = item;
-        result[1] = item1;
+        result[0] = item1;
+        result[1] = item2;
         assertThat(tracker.findByName("nameD"), is(result));
 
     }
@@ -82,8 +82,8 @@ public class TrackerTest {
         Item item3 = new Item("three", "threeDesc", 14L);
         tracker.add(item3);
         tracker.delete(item2.getId());
-        assertThat(tracker.findByName("one")[0], is(item1.getName()));
-        assertThat(tracker.findByName("three")[1], is(item3.getName()));
+        assertThat(tracker.findAll()[0], is(item1));
+        assertThat(tracker.findAll()[1], is(item3));
 
     }
 

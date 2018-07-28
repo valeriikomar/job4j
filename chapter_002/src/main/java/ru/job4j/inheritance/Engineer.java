@@ -1,9 +1,9 @@
 package ru.job4j.inheritance;
 
-public class Engineer extends Profession{
+public class Engineer extends Profession {
     private boolean isbuild;
 
-    public void build(House house){
+    public void build(House house) {
         house.setBuild(isbuild);
     }
 
