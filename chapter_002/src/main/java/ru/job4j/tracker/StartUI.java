@@ -10,6 +10,7 @@ public class StartUI {
     private static final String FINDBYID = "4";
     private static final String FINDBYNAME = "5";
     private static final String EXIT = "6";
+
 /*    private enum Menu {
         ADD(0), SHOW(1), EDIT(2), DELETE(3), FINDBYID(4), FINDBYNAME(5), EXIT(6);
         private int number;
@@ -85,7 +86,7 @@ public class StartUI {
     private void createItem() {
         System.out.println("------------ Добавление новой заявки --------------");
         String name = this.input.ask("Введите имя заявки : ");
-        String desc = this.input.ask("Введите описание заявки :");
+        String desc = this.input.ask("Введите описание заявки : ");
         Item item = new Item(name, desc);
         this.tracker.add(item);
         System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
@@ -111,14 +112,15 @@ public class StartUI {
         String id = this.input.ask("Введите Id заявки : ");
         Item it = this.tracker.findById(id);
         if (it != null) {
-            String name = this.input.ask("Введите имя заявки :");
-            String desc = this.input.ask("Введите описание заявки :");
+            String name = this.input.ask("Введите имя заявки : ");
+            String desc = this.input.ask("Введите описание заявки : ");
             it.setName(name);
             it.setDesc(desc);
         } else {
             System.out.println("Заявка по id " + id + " не найдена");
         }
     }
+
     /**
      * Метод удаления заявки по Id
       */
@@ -147,6 +149,10 @@ public class StartUI {
             System.out.println("Заявка по id: " + id + " не найдена");
         }
     }
+
+    /**
+     * Метод поиска по имени
+     */
     public void findByName() {
         System.out.println("------------ Найти заявку по имени ------------");
         String name = this.input.ask("Введите имя заявки : ");
