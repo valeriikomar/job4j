@@ -18,6 +18,7 @@ public class StartUITest {
         new StartUI(input, tracker).init();
         assertThat(tracker.findByName("one"), is(tracker.findAll()));
     }
+    /*
     @Test
     public void whenShowAllItemsThenShow() {
         Input input = new StubInput(new String[] {"0", "one", "oneDesc", "0", "two", "twoDesc", "1", "6"});
@@ -28,6 +29,7 @@ public class StartUITest {
         items[1] = tracker.findByName("two")[0];
         assertThat(tracker.findAll(), is(items));
     }
+    */
     @Test
     public void whenEditItemThenShowEditedItem() {
         Tracker tracker = new Tracker();
