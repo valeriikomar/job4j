@@ -7,10 +7,10 @@ public class SquareTest {
     public void whenDrawSquare() {
         Square square = new Square();
         assertThat(square.draw(), is(new StringBuilder()
-                                        .append("++++\n")
-                                        .append("+  +\n")
-                                        .append("+  +\n")
-                                        .append("++++\n")
+                                        .append("++++").append(System.lineSeparator())
+                                        .append("+  +").append(System.lineSeparator())
+                                        .append("+  +").append(System.lineSeparator())
+                                        .append("++++")
                                         .toString()
                                     )
         );
